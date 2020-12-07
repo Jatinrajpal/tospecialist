@@ -160,14 +160,40 @@ int32_t main()
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
     #endif
-    int n;
+    int n,cnt1=0,ans=0,flag=0,sum=0,cnt2=0;
     cin>>n;
-    int index=1, m=n*n;
-    for(int i=0;i<n;i++){
-        for(int j=0;j<n/2;j++){
-            cout<<index++<<" "<<m--<<" ";
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>a[i];
+        sum+=a[i];
+        if(a[i]&1)
+        {
+            flag=a[i];
+            cnt1++;
         }
-        cout<<"\n";
+        else{
+            cnt2++;
+        }
     }
+    for(int i=0;i<n;i++)
+    {
+        if((sum-a[i])%2==0)
+        {
+            ans++;
+        }
+    }
+    // cout<<sum<<"\n";
+    // cout<<cnt1<<"\n";
+    // cout<<cnt2<<"\n";
+    // if(cnt2%2==0 && sum%2==0)
+    // {
+    //     ans+=cnt2;
+    // }
+    // if(cnt1%2!=0 && sum%2!=0)
+    // {
+    //     ans+=cnt1;
+    // }
+    cout<<ans<<"\n";
     return 0;
 }
