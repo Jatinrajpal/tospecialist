@@ -148,11 +148,13 @@ int check(int n){
 //           // values.push_back(p); 
 //        }
 // } 
-vector<int> lucky; 
+vector<int> lucky;
+int l,r; 
 void backtracking(int x)
 {
     if(x>1e10)
         return ;
+    // cout<<x<<"\n";
     lucky.emplace_back(x); 
     backtracking(10*x+4);
     backtracking(10*x+7);   
@@ -178,9 +180,19 @@ int32_t main()
         freopen("input.txt", "r", stdin);
     #endif
     int n;
-    int l,r,sum=0;
+    int sum=0;
+    // int l,r,sum=0;
     cin>>l>>r;
+    backtracking(4);
+    backtracking(7);
+    // cout<<l<<" "<<r<<"\n";
+    // cout<<lucky.size()<<"\n";
     sort(lucky.begin(),lucky.end());
+    for(int i=0;i<lucky.size();i++)
+    {
+        cout<<lucky[i]<<" ";
+    }
+    cout<<"\n";
     int ans =solve(r)-solve(l-1);
     cout<<ans<<"\n";
     return 0;
