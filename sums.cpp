@@ -1,32 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
-#define ff              first
-#define ss              second
+// #define ff              first
+// #define ss              second
 #define int             long long  int
-#define pb              push_back
-#define mp              make_pair
-#define pii             pair<int,int>
-#define vi              vector<int>
-#define mii             map<int,int>
-#define pqb             priority_queue<int>
-#define pqs             priority_queue<int,vi,greater<int> >
-#define setbits(x)      __builtin_popcountll(x)
-#define zrobits(x)      __builtin_ctzll(x)
-#define mod             1000000007
-#define inf             1e18
-#define vv(type)        vector<vector<type>>
-#define ps(x,y)         fixed<<setprecision(y)<<x
-#define mk(arr,n,type)  type *arr=new type[n];
-#define w(x)            int x; cin>>x; while(x--)
-#define db(x)             cout<<x<<" "
-#define db1(x)             cout<<x<<"\n"
-#define db2(x,y)         cout<<x<<" "<<y<<"\n"
-#define db3(x,y,z)         cout<<x<<" "<<y<<" "<<z<<"\n"
-#define rep(i,n)         for(int i=0;i<(n);++i)
-#define repA(i,a,n)     for(int i=a;i<=(n);++i)
-#define repD(i,a,n)     for(int i=a;i>=(n);--i)
-#define so(a)             sort(a.begin(),a.end())
-mt19937                 rng(chrono::steady_clock::now().time_since_epoch().count());
+// #define pb              push_back
+// #define mp              make_pair
+// #define pii             pair<int,int>
+// #define vi              vector<int>
+// #define mii             map<int,int>
+// #define pqb             priority_queue<int>
+// #define pqs             priority_queue<int,vi,greater<int> >
+// #define setbits(x)      __builtin_popcountll(x)
+// #define zrobits(x)      __builtin_ctzll(x)
+// #define mod             1000000007
+// #define inf             1e18
+// #define vv(type)        vector<vector<type>>
+// #define ps(x,y)         fixed<<setprecision(y)<<x
+// #define mk(arr,n,type)  type *arr=new type[n];
+// #define w(x)            int x; cin>>x; while(x--)
+// #define db(x)             cout<<x<<" "
+// #define db1(x)             cout<<x<<"\n"
+// #define db2(x,y)         cout<<x<<" "<<y<<"\n"
+// #define db3(x,y,z)         cout<<x<<" "<<y<<" "<<z<<"\n"
+// #define rep(i,n)         for(int i=0;i<(n);++i)
+// #define repA(i,a,n)     for(int i=a;i<=(n);++i)
+// #define repD(i,a,n)     for(int i=a;i>=(n);--i)
+// #define so(a)             sort(a.begin(),a.end())
+// mt19937                 rng(chrono::steady_clock::now().time_since_epoch().count());
 // to find all local maximaa and minima in O(n)
     // for (int i=1;i<=n;i++)
     //    {
@@ -129,71 +129,21 @@ int check(int n){
     }
     return res;
 }
-// void SieveOfEratosthenes(int n) 
-// { 
-//     memset(prime, true, sizeof(prime)); 
-//     for (int p=2; p*p<=1000001; p++) 
-//     { 
-//         if (prime[p] == true) 
-//         { 
-//             for (int i=p*p; i<=n; i += p) 
-//                 prime[i] = false; 
-//         } 
-//     } 
-//     for (int p=2; p<=1000001; p++) 
-//        if (prime[p]) 
-//        {
-//         s.insert(p);
-//             // cout<<p<<" ";
-//           // values.push_back(p); 
-//        }
-// } 
-vector<int> lucky;
-int l,r; 
-void backtracking(int x)
-{
-    if(x>1e10)
-        return ;
-    // cout<<x<<"\n";
-    lucky.emplace_back(x); 
-    backtracking(10*x+4);
-    backtracking(10*x+7);   
-}
-int solve(int x){
-    if(x == 0) 
-        return 0LL;
-    int res = 0;
-    int last = 0;
-    for(auto a : lucky){
-        int r = min(a, x);
-        res += (r - last) * a;
-        last = r;
-    }
-    return res;
-}
 int32_t main()
 {
+    // solve();
     ios_base::sync_with_stdio(0); 
     cin.tie(0); 
     cout.tie(0);
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
     #endif
-    int n;
-    int sum=0;
-    // int l,r,sum=0;
-    cin>>l>>r;
-    backtracking(4);
-    backtracking(7);
-    // cout<<l<<" "<<r<<"\n";
-    // cout<<lucky.size()<<"\n";
-    sort(lucky.begin(),lucky.end());
-    for(int i=0;i<lucky.size();i++)
+    // int t;
+        int n=50;
+    for(int i=1;i<n;i++)
     {
-        cout<<lucky[i]<<" ";
+        cout<<i<<"\n";
     }
-    cout<<"\n";
-    int ans =solve(r)-solve(l-1);
-    cout<<ans<<"\n";
+
     return 0;
 }

@@ -1,172 +1,76 @@
-#include<bits/stdc++.h>
-using namespace std;
-#define ff              first
-#define ss              second
-#define int             long long  int
-#define pb              push_back
-#define mp              make_pair
-#define pii             pair<int,int>
-#define vi              vector<int>
-#define mii             map<int,int>
-#define pqb             priority_queue<int>
-#define pqs             priority_queue<int,vi,greater<int> >
-#define setbits(x)      __builtin_popcountll(x)
-#define zrobits(x)      __builtin_ctzll(x)
-#define mod             1000000007
-#define inf             1e18
-#define vv(type)        vector<vector<type>>
-#define ps(x,y)         fixed<<setprecision(y)<<x
-#define mk(arr,n,type)  type *arr=new type[n];
-#define w(x)            int x; cin>>x; while(x--)
-#define db(x)             cout<<x<<" "
-#define db1(x)             cout<<x<<"\n"
-#define db2(x,y)         cout<<x<<" "<<y<<"\n"
-#define db3(x,y,z)         cout<<x<<" "<<y<<" "<<z<<"\n"
-#define rep(i,n)         for(int i=0;i<(n);++i)
-#define repA(i,a,n)     for(int i=a;i<=(n);++i)
-#define repD(i,a,n)     for(int i=a;i>=(n);--i)
-#define so(a)             sort(a.begin(),a.end())
-mt19937                 rng(chrono::steady_clock::now().time_since_epoch().count());
-// to find all local maximaa and minima in O(n)
-    // for (int i=1;i<=n;i++)
-    //    {
-    //        if (i==1 || i==n || (p[i-1]<p[i])!=(p[i]<p[i+1]))
-    //       ans.push_back(p[i]);
-    //    }
-int dx[] = { -1, 1, -1, 0, 0, -1, 1, 1 };
-int dy[] = { -1, -1, 1, -1, 1, 0, 0, 1 };
-int gcd(int a, int b)
-{
-    if (!b)
-        return a;
-    return gcd(b, a % b);
-}
-bool isPrime(int n) 
-{ 
-    if (n <= 1) 
-        return false; 
-    if (n <= 3) 
-        return true; 
-  
-    if (n % 2 == 0 || n % 3 == 0) 
-        return false; 
-  
-    for (int i = 5; i * i <= n; i = i + 6) 
-        if (n % i == 0 || n % (i + 2) == 0) 
-            return false; 
-  
-    return true; 
-}
-int modular_expo(int x, int y, int m)
-{
-    int ans = 1;
-    while (y)
-    {
-        if (y & 1)
-            ans = (ans % m * x % m) % m;
-        x = (x % m * x % m) % m;
-        y /= 2;
-    }
-    return ans % m ;
-}
-int power(int x, int y)
-{
-    int ans = 1;
-    while (y)
-    {
-        if (y & 1)
-            ans = (ans * x);
-        x *= x;
-        y /= 2;
-    }
-    return ans;
-}
-void solve()
-{
+import java.util.*;
+import java.io.*;
+import java.lang.*;
+public class Solution{
+    BufferedReader br =new BufferedReader(new InputStreamReader(System.in)); 
+    PrintWriter out =new PrintWriter(System.out);
+    StringTokenizer st =new StringTokenizer("");
+    String next(){
+        if(!st.hasMoreTokens()){
+            try{
+                st=new StringTokenizer(br.readLine());
+            }
+            catch(Exception e){
 
-    ios_base::sync_with_stdio(0); 
-    cin.tie(0); 
-    cout.tie(0);
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-    #endif
-}
-int primeFactors(int n) 
-{   
-    int cnt=1;
-    while (n%2 == 0) 
-    { 
-        printf("%d ", 2);
-        cnt++; 
-        n = n/2; 
-    } 
-    for (int i = 3; i <= sqrt(n); i+=2) 
-    { 
-        while (n%i == 0) 
-        { 
-            cnt++;
-            printf("%d ", i); 
-            n = n/i; 
-        } 
-    } 
-  
-    if (n > 2) 
-        cnt++;
-    return cnt;
-} 
-int check(int n){
-    int l=1,h=n,res=h;
-    while(l<=h){
-        int mid=(l+h)/2;
-        int total=((mid)*(mid+1))/2;
-        if(total>=n){
-            res=mid;
-            h=mid-1;
+            }
         }
-        else{
-            l=mid+1;
-        }
+        return st.nextToken();
     }
-    return res;
-}
-bool prime[100001];     
-vector<int> values;
-set<int> s; 
-// int n=1000001;
-void SieveOfEratosthenes(int n) 
-{ 
-    memset(prime, true, sizeof(prime)); 
-    for (int p=2; p*p<=1000001; p++) 
-    { 
-        if (prime[p] == true) 
-        { 
-            for (int i=p*p; i<=n; i += p) 
-                prime[i] = false; 
-        } 
-    } 
-    for (int p=2; p<=1000001; p++) 
-       if (prime[p]) 
-       {
-        s.insert(p);
-            // cout<<p<<" ";
-          // values.push_back(p); 
-       }
-} 
-int32_t main()
-{
-    ios_base::sync_with_stdio(0); 
-    cin.tie(0); 
-    cout.tie(0);
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt", "r", stdin);
-    #endif
-    // int n,temp,flag=-1;
-    string n;
-    cin>>n;
-    cout<<n;
-    reverse(n.begin(),n.end());
-    cout<<n;
-    // cin>>n;
-    // temp=n;
-    return 0;
+    int nextInt(){
+        return Integer.parseInt(next());
+    }
+    public static void main(String[] args) {
+        new Solution().solve();
+    }
+    Set<String> toCheck =new HashSet<>();
+    boolean check(String str1,String str2){
+        if(str1.equals(str2)) return true;
+        for(int i=0;i<str1.length();i++){
+            int z=0,o=0;
+            for(int j=i;j<str1.length();j++){
+                if(str1.charAt(j)=='1') o++;
+                else z++;
+                if(o%2==0){
+                    String temp="";
+                    for(int t=0;t<i;t++) temp+=str1.charAt(t);  
+                    for(int t=j;t>=i;t--) temp+=str1.charAt(t);
+                    for(int t=j+1;t<str1.length();t++) temp+=str1.charAt(t);
+                    if(temp.equals(str2)) {
+                        return true;
+                    } 
+                    else{
+                        toCheck.add(str1);
+                        if(!toCheck.contains(temp) &&  check(temp,str2)) return true;
+                    } 
+                }
+            }
+        }
+        return false;
+    }
+    void solve(){ 
+        int t=0;
+        t=nextInt();
+        while(t-->0){
+            String str=next();
+            int cnt=0;
+            for(int i=1;i<=str.length();i++){
+                Set<String> set =new HashSet<>();
+                for(int j=0;j+i<=str.length();j++){
+                    String temp=str.substring(j,j+i);
+                    boolean flag=false;
+                    for(String s:set){
+                        toCheck.clear();
+                        if(check(temp, s)){
+                            flag=true;
+                            break;
+                        }
+                    }
+                    if(!flag) set.add(temp);
+                }
+                cnt+=set.size();
+            }
+            out.println(cnt);
+        }
+        out.close();
+    }
 }

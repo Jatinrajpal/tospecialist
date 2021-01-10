@@ -179,46 +179,32 @@ int32_t main()
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
     #endif
-    int t;
-    while(t--)
-    {
-        int n;
-        cin>>n;
-        int v1[n],v2[n];
-        int a[10]={0};
-        int b[10]={0};
-        for(int i=0;i<n;i++)
+        int t;
+        cin>>t;
+        while(t--)
         {
-            cin>>v1[i];
-            a[v1[i]]++;
-        }
-        for(int i=0;i<n;i++)
-        {
-            cin>>v2[i];
-            b[v2[i]]++;
-        }
-        int cnt1=0,cnt2=0;
-        for(int i=9;i>=0;i--)
-        {
-            if(a[i]>b[i])
+            int n;
+            cin>>n;
+            string s;
+            cin>>s;
+            int len=0;
+            for(int i=n-1;i>=0;i--)
             {
-                cnt1++;
-            }   
-            else if(b[i]>a[i]){
-                cnt2++;
-            }   
+                if(s[i]==')')
+                {
+                    len++;
+                }
+                else{
+                    break;
+                }
+            }
+            if(abs(n-len)<len)
+            {
+                cout<<"Yes\n";
+            }
+            else{
+                cout<<"No\n";
+            }
         }
-        if(cnt1>cnt2)
-        {
-            cout<<"RED\n";
-        }
-        else if(cnt2>cnt1)
-        {
-            cout<<"BLUE\n";
-        }
-        else{
-            cout<<"EQUAL\n";
-        }
-     return 0;
-        }
+    return 0;
 }

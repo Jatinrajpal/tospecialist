@@ -180,45 +180,35 @@ int32_t main()
         freopen("input.txt", "r", stdin);
     #endif
     int t;
+    cin>>t;
     while(t--)
     {
         int n;
         cin>>n;
-        int v1[n],v2[n];
-        int a[10]={0};
-        int b[10]={0};
-        for(int i=0;i<n;i++)
-        {
-            cin>>v1[i];
-            a[v1[i]]++;
-        }
-        for(int i=0;i<n;i++)
-        {
-            cin>>v2[i];
-            b[v2[i]]++;
-        }
+        // int v1[n],v2[n];
+        string s1,s2;
+        cin>>s1>>s2;
+        // cout<<s1<<s2<<"\n";
         int cnt1=0,cnt2=0;
-        for(int i=9;i>=0;i--)
+        for(int i=0;i<n;i++)
         {
-            if(a[i]>b[i])
+            if(s1[i]>s2[i])
             {
                 cnt1++;
-            }   
-            else if(b[i]>a[i]){
+            }
+            else if(s2[i]>s1[i])
+            {
                 cnt2++;
-            }   
-        }
-        if(cnt1>cnt2)
+            }
+            // v.push_back()
+        }    
+        if(s1==s2 || cnt1==cnt2)
         {
-            cout<<"RED\n";
-        }
-        else if(cnt2>cnt1)
-        {
-            cout<<"BLUE\n";
-        }
-        else{
             cout<<"EQUAL\n";
         }
-     return 0;
+        else{
+            cnt1>cnt2?cout<<"RED\n":cout<<"BLUE\n";
         }
+    }
+     return 0;
 }

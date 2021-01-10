@@ -129,29 +129,48 @@ int check(int n){
     }
     return res;
 }
-bool prime[100001];     
-vector<int> values;
-set<int> s; 
-// int n=1000001;
-void SieveOfEratosthenes(int n) 
-{ 
-    memset(prime, true, sizeof(prime)); 
-    for (int p=2; p*p<=1000001; p++) 
-    { 
-        if (prime[p] == true) 
-        { 
-            for (int i=p*p; i<=n; i += p) 
-                prime[i] = false; 
-        } 
-    } 
-    for (int p=2; p<=1000001; p++) 
-       if (prime[p]) 
-       {
-        s.insert(p);
-            // cout<<p<<" ";
-          // values.push_back(p); 
-       }
-} 
+// void SieveOfEratosthenes(int n) 
+// { 
+//     memset(prime, true, sizeof(prime)); 
+//     for (int p=2; p*p<=1000001; p++) 
+//     { 
+//         if (prime[p] == true) 
+//         { 
+//             for (int i=p*p; i<=n; i += p) 
+//                 prime[i] = false; 
+//         } 
+//     } 
+//     for (int p=2; p<=1000001; p++) 
+//        if (prime[p]) 
+//        {
+//         s.insert(p);
+//             // cout<<p<<" ";
+//           // values.push_back(p); 
+//        }
+// } 
+vector<int> lucky;
+int l,r; 
+void backtracking(int x)
+{
+    if(x>1e10)
+        return ;
+    // cout<<x<<"\n";
+    lucky.emplace_back(x); 
+    backtracking(10*x+4);
+    backtracking(10*x+7);   
+}
+int solve(int x){
+    if(x == 0) 
+        return 0LL;
+    int res = 0;
+    int last = 0;
+    for(auto a : lucky){
+        int r = min(a, x);
+        res += (r - last) * a;
+        last = r;
+    }
+    return res;
+}
 int32_t main()
 {
     ios_base::sync_with_stdio(0); 
@@ -160,26 +179,30 @@ int32_t main()
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
     #endif
-        w(t)
+        int t;
+        cin>>t;
+        while(t--)
         {
-            int k;
-            cin>>k;
-            SieveOfEratosthenes(k);
-            int ans=sqrt(k);
-            cout<<ans<<"\n";
-            if(ans*ans==k){
-                if(s.count(ans)>0)
+            int x;
+            cin>>x;
+            int a[10]={0};
+            while(x>9)
+            {
+                x-=9;
+                a[9]++;
+            }
+            a[x]++;
+            string s;
+            for(int i=0;i<10;i++)
+            {
+                while(a[i]>0)
                 {
-                    cout<<"YES\n";
-                }
-                else{
-                    cout<<"NO\n";
+                    s+=(i+'0');
+                    a[i]--;
                 }
             }
-            else{
-                cout<<"NO\n";
-            }
-            s.erase(s.begin(),s.end());
+            cout<<s<<"\n";
+
         }
     return 0;
 }

@@ -65,84 +65,48 @@ int power(int x, int y)
     }
     return ans;
 }
-int maxSubArraySum(int a[], int size) 
-{ 
-    int max_so_far = INT_MIN, max_ending_here = 0; 
-  
-    for (int i = 0; i < size; i++) 
-    { 
-        max_ending_here = max_ending_here + a[i]; 
-        if (max_so_far < max_ending_here) 
-            max_so_far = max_ending_here; 
-  
-        if (max_ending_here < 0) 
-            max_ending_here = 0; 
-    } 
-    return max_so_far; 
-} 
 void solve()
 {
-
-    ios_base::sync_with_stdio(0); 
-    cin.tie(0); 
-    cout.tie(0);
+    
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
     #endif
-}
-int okarr(int a[],int n)
-{
-    int sum=0,res=0;
-    for(int i=0;i<n;i++)
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    w(t)
     {
-        sum+=a[i];
-        res=max(sum,res);
     }
-    return res;
 }
-int check(int n){
-    int l=1,h=n,res=h;
-    while(l<=h){
-        int mid=(l+h)/2;
-        int total=((mid)*(mid+1))/2;
-        if(total>=n){
-            res=mid;
-            h=mid-1;
-        }
-        else{
-            l=mid+1;
-        }
-    }
-    return res;
-}
+
 int32_t main()
 {
-    // solve();
-    ios_base::sync_with_stdio(0); 
-    cin.tie(0); 
-    cout.tie(0);
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
-        // freopen("op.txt","w",stdout);
     #endif
-        // int t;
-        // cin>>t;
-        // while(t--)
-        w(t)
+    
+   int t;
+   cin>>t;
+   while(t--){
+    int x,y,k,n;
+    cin>>x>>y>>k>>n;
+    x=min(x,y);
+    y=max(x,y);
+    int m=x+(y-x);
+    if((y-x)%k==0 || (y-x)%2!=0)
+    {
+        cout<<"NO\n";
+    }
+    else{
+        int tot1=(y-x)/k,tot2=(y-m)/k;
+        if(tot1!=tot2)
         {
-            int n;
-            cin>>n;
-            string s="989";
-            if(n<=3)
-            {
-              s=s.substr(0,n);
-            }
-            cout<<s;
-            for(int i=3;i<n;i++)
-            {
-              cout<<(i-3)%10;
-            }
-            cout<<"\n";
+            cout<<"NO\n";
         }
-    return 0;
+        else{
+            cout<<"YES\n";
+        }
+    }
+    }
+        return 0;
+
+
 }

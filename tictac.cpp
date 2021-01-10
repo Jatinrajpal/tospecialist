@@ -138,29 +138,11 @@ int32_t main()
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
     #endif
-    int t;
-    cin>>t;
-    while(t--)
+    // int t;
+        int n=50;
+    for(int i=1;i<n;i++)
     {
-        int n,d;
-        cin>>n>>d;
-        char a[n][n];
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<n;j++)
-            {
-                cin>>a[i][j];
-            }
-        }
-        int i=0,j=0;
-        for(int i=0;i<n;i++)
-        {
-            for(int j=0;j<n;j++)
-            {
-                cout<<a[i][j];
-            }
-            cout<<"\n";
-        }
+    	cout<<i<<"\n";
     }
 
     return 0;
