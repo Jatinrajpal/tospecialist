@@ -73,30 +73,37 @@ void solve()
     cout.tie(0);
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
+        freopen("op.txt","w",stdout);
     #endif
+        int n;
+        cin>>n;
         int t;
         cin>>t;
-        while(t--)
+        vector<pair<int,int>> v;
+        for(int i=0;i<n;i++)
         {
-        	string s;
- 			int n,k;
- 			cin>>n>>k>>s;
- 			int i=0,j=n-1,cnt=0;
- 			while(i<j && i<n && j>0)
- 			{
- 				if(s[i]=='*')
- 				{
- 					cnt++;
- 					i+=2;
- 				}
- 				if(s[j]=='*')
- 				{
- 					cnt++;
- 					j-=2;
- 				}
- 			}
- 			cout<<cnt<<"\n";
-        }	
+        	int x,y;
+        	cin>>x>>y;
+        	v.pb(make_pair(x,y));
+        }
+        int val=INT_MIN,flag=0;
+        for(int i=0;i<n-1;i++)
+        {
+        	// val=(v[i].second-i,
+        	if(val<(v[i].second-v[i-1].second))
+        	{
+        		val=(v[i].second-v[i-1].second);
+        		flag=i;
+        	}
+        }
+        // cout<<val<<'\n';
+        if(val<(v[n-1].second-v[n-2].second))
+        {
+        	val=(v[n-1].second-(n-1));
+        	flag=n-1;
+        }
+        // cout<<v[flag].first;
+       	cout<<char(v[flag].first+'a');
 }
 
 int32_t main()

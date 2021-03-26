@@ -130,19 +130,26 @@ int32_t main()
         // while(t--)
         w(t)
         {
-            int n;
-            cin>>n;
-            string s="989";
-            if(n<=3)
+            string s;
+            getline(cin,s);
+            int n=s.length();
+            string arr[] ;
+            for(int i=0;i<n;i++)
             {
-              s=s.substr(0,n);
+                int c=s[i];
+                int flag=1;
+                if(s[i]=='"')
+                {
+                    if(flag==0)
+                        flag=1;
+                    else
+                        flag=0;
+                }
+                if(isspace(s[i]) && flag!=0)
+                {
+
+                }
             }
-            cout<<s;
-            for(int i=3;i<n;i++)
-            {
-              cout<<(i-3)%10;
-            }
-            cout<<"\n";
         }
     return 0;
 }

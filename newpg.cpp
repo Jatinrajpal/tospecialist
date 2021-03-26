@@ -78,25 +78,26 @@ void solve()
         cin>>t;
         while(t--)
         {
-        	string s;
- 			int n,k;
- 			cin>>n>>k>>s;
- 			int i=0,j=n-1,cnt=0;
- 			while(i<j && i<n && j>0)
- 			{
- 				if(s[i]=='*')
- 				{
- 					cnt++;
- 					i+=2;
- 				}
- 				if(s[j]=='*')
- 				{
- 					cnt++;
- 					j-=2;
- 				}
- 			}
- 			cout<<cnt<<"\n";
-        }	
+            string s;
+            int n,k;
+            cin>>n>>k>>s;
+            vector<int> ve;
+            for(int i=0;i<n;i++)
+            {
+                if(s[i]=='*')
+                    ve.pb(i);
+            }
+            int ans=ve[0],cnt=1,j=0,i=0;
+            while(i<n){
+                j=i+1;
+                while(ve[j]-ve[i]<k && j<ve.size()){
+                    j++;
+                }
+                i=j-1;
+                cnt++;
+            }
+            cout<<cnt<<"\n";
+        }   
 }
 
 int32_t main()

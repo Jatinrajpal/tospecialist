@@ -65,6 +65,14 @@ int power(int x, int y)
     }
     return ans;
 }
+int Summation( int arr[] , int n )
+{
+	int result = 0;
+ 
+    for (int i=0; i<n; i++)
+        result += (arr[i] * (i+1) * (n-i));
+ 	return result ;
+}
 void solve()
 {
 
@@ -74,29 +82,18 @@ void solve()
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
     #endif
-        int t;
-        cin>>t;
-        while(t--)
-        {
-        	string s;
- 			int n,k;
- 			cin>>n>>k>>s;
- 			int i=0,j=n-1,cnt=0;
- 			while(i<j && i<n && j>0)
- 			{
- 				if(s[i]=='*')
- 				{
- 					cnt++;
- 					i+=2;
- 				}
- 				if(s[j]=='*')
- 				{
- 					cnt++;
- 					j-=2;
- 				}
- 			}
- 			cout<<cnt<<"\n";
-        }	
+        
+    string a;
+    cin>>a;
+    int ans[a.length()];
+    for(int i=0;i<a.length();i++)
+    {
+    	ans[i]=(a[i]-'0');
+    }
+    int re=0,n=a.length();
+    for (int i=0; i<a.length(); i++)
+        re += (ans[i] * (i+1) * (n-i));
+ 	cout<<re<<"\n";
 }
 
 int32_t main()

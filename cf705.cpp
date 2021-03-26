@@ -74,29 +74,18 @@ void solve()
     #ifndef ONLINE_JUDGE
         freopen("input.txt", "r", stdin);
     #endif
-        int t;
-        cin>>t;
-        while(t--)
+        w(t)
         {
-        	string s;
- 			int n,k;
- 			cin>>n>>k>>s;
- 			int i=0,j=n-1,cnt=0;
- 			while(i<j && i<n && j>0)
- 			{
- 				if(s[i]=='*')
- 				{
- 					cnt++;
- 					i+=2;
- 				}
- 				if(s[j]=='*')
- 				{
- 					cnt++;
- 					j-=2;
- 				}
- 			}
- 			cout<<cnt<<"\n";
-        }	
+        	int c;
+        	cin>>c;
+        	int d=log2(c)+1;
+        	cout<<d<<" ";
+        	int val=power(2,d);
+        	// for(int i=0;i<val;i++)
+        	// {
+
+        	// }
+        }
 }
 
 int32_t main()
