@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#define int long long int
 using namespace std;
 
 int LCS(string X, string Y, int m, int n)
@@ -23,7 +24,7 @@ int LCS(string X, string Y, int m, int n)
     return ans;
 }
 
-int main() {
+int32_t main() {
     ios_base::sync_with_stdio(0); 
     cin.tie(0); 
     cout.tie(0);
@@ -34,17 +35,35 @@ int main() {
         cin>>t;
         while(t--)
         {
-            int n,m,k;
-            cin>>n>>m>>k;
-            int a[n][m];
-            for(int i=0;i<n;i++)
+            int n;
+            cin>>n;
+            int a[n+1];
+            for(int i=1;i<=n;i++)
             {
-                for(int j=0;j<m;j++)
-                {
-                    cin>>a[i][j];
-                }
+                cin>>a[i];
+                cout<<a[i]<<" ";
             }
-            cout<<(a[0][0]+k)^(a[n-1][m-1]+k)<<"\n";
+            cout<<"\n";
+            int i=1,k=1,cnt=0,v=n-1;
+            while(i<n)
+            {
+                k=i;
+                while(a[k]!=i)
+                {
+                    k++;
+                }
+                int val=i,val1=k;
+                cnt+=(k-i+1);
+                while(val<=val1)
+                {
+                    swap(a[val],a[val1]);
+                    val1--;
+                    val++;
+                }
+                i++;
+            }
+            cout<<cnt<<"\n";
+        
 
         }
     return 0;
